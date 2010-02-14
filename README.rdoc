@@ -224,7 +224,7 @@ mobile_filterを有効にすると以下の処理が自動で行われる。
 * hpricot
 * rspec
 * rspec-rails
-* spec-fixtures
+* rspec-fixture
 
 == リンク
 
