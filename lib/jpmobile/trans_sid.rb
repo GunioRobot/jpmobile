@@ -35,7 +35,7 @@ module ActionController
     end
 
     def redirect_to_full_url(url, status)
-      if apply_trans_sid? and !url.match(/#{session_key}/)
+      if apply_trans_sid? and !url.match(/#{session_key}/) and jpmobile_session_id
         uri = URI.parse(url)
         if uri.query
           uri.query += "&#{session_key}=#{jpmobile_session_id}"
@@ -64,6 +64,9 @@ module ActionController
     private
     # trans_sidを適用すべきかを返す。
     def apply_trans_sid?
+      # session_id が blank の場合は適用しない
+      return false if trans_sid_mode and jpmobile_session_id.blank?
+
       case trans_sid_mode
       when :always
         session.inspect
@@ -111,6 +114,7 @@ module Jpmobile::TransSid #:nodoc:
   def append_session_id_parameter
     return unless request # for test process
     return unless apply_trans_sid?
+    return unless jpmobile_session_id
     response.body.gsub!(%r{(</form>)}i, sid_hidden_field_tag+'\1')
   end
 end
