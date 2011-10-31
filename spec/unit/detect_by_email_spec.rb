@@ -5,7 +5,7 @@ describe 'Jpmobile::Email' do
   Spec::Fixture::Base.new self, :email_addr => :carrier do
 
     it '#detect should return :carrier when take :email_addr as EmailAddr' do |email_addr, carrier|
-      Jpmobile::Email.detect(email_addr).should == carrier 
+      Jpmobile::Email.detect(email_addr).should == carrier
     end
 
     set_fixtures([

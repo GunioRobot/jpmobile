@@ -12,7 +12,7 @@ module Jpmobile
       @colors = colors
       @color_p = color_p
     end
-    
+
     # 画面がカラーならば +true+、白黒ならば +false+ を返す。不明の場合は +nil+。
     def color?; @color_p; end
     # 画面の色数を返す。不明の場合は +nil+。

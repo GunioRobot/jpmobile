@@ -140,7 +140,7 @@ class AuTest < Test::Unit::TestCase
       end
     end
   end
-  
+
   # 位置情報取得機能の有無, W31CA
   def test_au_location_capability_w31ca
     reqs = request_with_ua("KDDI-CA32 UP.Browser/6.2.0.7.3.129 (GUI) MMP/2.0")
